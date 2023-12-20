@@ -14,13 +14,12 @@ const Dashboard = async () => {
   if (!session) {
     redirect("/");
   }
-  const { email } = session?.user
-
+  
   const key = process.env.LEMONSQUEEZY_API_KEY as string
   const orders = await listAllOrders({
     apiKey: key
   });
-  const isSubscribed = orders.data.find(x => x.attributes.user_email === email && x.attributes.status === 'paid')
+  const isSubscribed = orders.data.find(x => x.attributes.user_email === session.user?.email && x.attributes.status === 'paid')
   console.log(orders.data)
   return (
     <>
