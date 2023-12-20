@@ -31,6 +31,7 @@ export default async function RootLayout({
         </main>
         <Footer />
         <Analytics />
+        <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
       </body>
     </html>
   );
