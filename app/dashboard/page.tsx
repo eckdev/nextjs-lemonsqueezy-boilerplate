@@ -1,20 +1,37 @@
+
 import React, { useLayoutEffect } from "react";
 import { authOptions } from "../api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
+import { Session, getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
+import Script from "next/script";
+import Button from "./button";
+import { LemonsqueezyClient } from "lemonsqueezy.ts";
+import { retrieveOrder, listAllOrders } from "lemonsqueezy.ts/order";
+
 const Dashboard = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions) as Session;
   if (!session) {
     redirect("/");
   }
+  const { email } = session?.user
+
+  const key = process.env.LEMONSQUEEZY_API_KEY as string
+  const orders = await listAllOrders({
+    apiKey: key
+  });
+  const isSubscribed = orders.data.find(x => x.attributes.user_email === email && x.attributes.status === 'paid')
+  console.log(orders.data)
   return (
-    <div
-      className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
-      style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-    >
-      Dashboard
-    </div>
+    <>
+    <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+      <div
+        className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
+        style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+      >
+          <Button subscribed={isSubscribed} />
+      </div>
+    </>
   );
 };
 
