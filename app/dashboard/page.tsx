@@ -20,7 +20,6 @@ const Dashboard = async () => {
     apiKey: key
   });
   const isSubscribed = orders.data.find(x => x.attributes.user_email === session.user?.email && x.attributes.status === 'paid')
-  console.log(orders.data)
   return (
     <>
       <div
