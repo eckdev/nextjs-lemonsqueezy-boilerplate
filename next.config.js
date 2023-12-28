@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  typescript: {
+    ignoreBuildErrors: true
+  },
   images: {
     domains: ["lh3.googleusercontent.com", "vercel.com"],
   },

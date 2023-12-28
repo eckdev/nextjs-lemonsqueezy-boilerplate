@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Form from "@/components/shared/form";
 import Link from "next/link";
+import RegisterForm from "@/components/forms/register-form";
 
 export default function Login() {
   return (
@@ -16,12 +16,12 @@ export default function Login() {
               height={20}
             />
           </Link>
-          <h3 className="text-xl font-semibold">Sign In</h3>
+          <h3 className="text-xl font-semibold">Sign Up</h3>
           <p className="text-sm text-gray-500">
-            Use your email and password to sign in
+            Create an account with your email and password
           </p>
         </div>
-        <Form type="login" />
+        <RegisterForm />
       </div>
   );
 }
