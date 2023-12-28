@@ -18,4 +18,6 @@ model User {
   name          String?
   email         String   @unique
   password      String
+  resetPasswordToken            String?     @unique @map("reset_password_token")
+  resetPasswordTokenExpiry      DateTime?   @map("reset_password_token_expiery")
 }

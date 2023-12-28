@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import LoadingDots from "../shared/loading-dots";
-import { signIn } from "next-auth/react";
 import FormInput from "../ui/form/input";
 
 type SignUpWithEmailFormInputs = z.infer<typeof signUpWithPasswordSchema>;

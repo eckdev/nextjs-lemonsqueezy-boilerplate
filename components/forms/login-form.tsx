@@ -20,28 +20,27 @@ const LoginForm = () => {
     resolver: zodResolver(signInWithPasswordSchema),
     defaultValues: {
       email: "",
-      password: ""
+      password: "",
     },
   });
 
   const onSubmit = (formData: SignInWithEmailFormInputs) => {
-    const { email, password } = formData
+    const { email, password } = formData;
     setLoading(true);
     signIn("credentials", {
-        redirect: false,
-        email,
-        password,
-        // @ts-ignore
-      }).then(({ error }) => {
-        if (error) {
-          setLoading(false);
-        } else {
-          router.refresh();
-          router.push("/dashboard");
-        }
-      });
-  }
-
+      redirect: false,
+      email,
+      password,
+      // @ts-ignore
+    }).then(({ error }) => {
+      if (error) {
+        setLoading(false);
+      } else {
+        router.refresh();
+        router.push("/dashboard");
+      }
+    });
+  };
 
   return (
     <Form {...form}>
@@ -49,8 +48,18 @@ const LoginForm = () => {
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
         className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
       >
-        <FormInput type="text" name="email" label="Email" control={form.control} />
-        <FormInput type="password" name="password" label="Password" control={form.control} />
+        <FormInput
+          type="text"
+          name="email"
+          label="Email"
+          control={form.control}
+        />
+        <FormInput
+          type="password"
+          name="password"
+          label="Password"
+          control={form.control}
+        />
         <button
           disabled={loading}
           className={`${
@@ -61,13 +70,29 @@ const LoginForm = () => {
         >
           {loading ? <LoadingDots color="#808080" /> : <p>{"Sign In"}</p>}
         </button>
-        <p className="text-center text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
-          <Link href="/register" className="font-semibold text-gray-800">
-            Sign up
-          </Link>{" "}
-          for free.
-        </p>
+        <div className="text-muted-foreground grid w-full text-sm max-sm:max-w-[340px] max-sm:px-10">
+          <div>
+            <span className="text-center text-sm text-gray-600">
+              Don&apos;t have an account?{" "}
+              <Link href="/register" className="font-semibold text-gray-800 hover:underline">
+                Sign up
+              </Link>{" "}
+              for free.
+            </span>
+          </div>
+          <div>
+            <span>Forgot your password? </span>
+            <Link
+              aria-label="Reset password"
+              href="/login/forgot-password"
+              className="font-semibold text-gray-800 hover:underline"
+            >
+              Reset now
+              <span className="sr-only">Reset Password</span>
+            </Link>
+            .
+          </div>
+        </div>
       </form>
     </Form>
   );
