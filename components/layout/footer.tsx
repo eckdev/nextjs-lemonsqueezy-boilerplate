@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="absolute w-full py-5 text-center">
+    <footer className="container w-full py-5 text-center">
       <p className="text-gray-500">
         Built with{" "}
         <a
@@ -12,6 +12,6 @@ export default function Footer() {
           love
         </a>
       </p>
-    </div>
+    </footer>
   );
 }
