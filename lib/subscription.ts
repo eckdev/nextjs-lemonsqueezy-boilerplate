@@ -37,6 +37,8 @@ export async function getUserSubscriptionPlan(email: string) {
   const monthlyVariantId = process.env.NEXT_PUBLIC_LEMONSQUEEZY_MONTH_PRODUCT_ID
   const yearlyVariantId = process.env.NEXT_PUBLIC_LEMONSQUEEZY_YEAR_PRODUCT_ID
 
+  console.log(monthlyVariantId)
+
 
   return {
     ...user,
