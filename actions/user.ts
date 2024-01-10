@@ -18,3 +18,18 @@ export async function getUserByResetPasswordToken(
       throw new Error("Error getting user by reset password token")
     }
   }
+
+  export async function getUserByEmail(
+    email: string
+  ): Promise<User | null> {
+    try {
+      return await prisma.user.findUnique({
+        where: {
+          email,
+        },
+      })
+    } catch (error) {
+      console.error(error)
+      throw new Error("Error getting user by reset password token")
+    }
+  }

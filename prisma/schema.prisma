@@ -20,4 +20,9 @@ model User {
   password      String
   resetPasswordToken            String?     @unique @map("reset_password_token")
   resetPasswordTokenExpiry      DateTime?   @map("reset_password_token_expiery")
+
+  customerId       String?   @unique
+  subscriptionId   String?   @unique
+  variantId        Int?
+  currentPeriodEnd DateTime?
 }

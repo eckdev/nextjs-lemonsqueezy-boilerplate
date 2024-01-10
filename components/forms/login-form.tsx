@@ -37,7 +37,7 @@ const LoginForm = () => {
         setLoading(false);
       } else {
         router.refresh();
-        router.push("/dashboard");
+        router.push("/subscription");
       }
     });
   };

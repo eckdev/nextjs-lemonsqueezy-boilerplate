@@ -35,12 +35,12 @@ export default function UserDropdown({ session }: { session: Session }) {
             >
               <LayoutDashboard className="h-4 w-4" />
               <Link href="/dashboard" className="text-sm">
-            Dashboard
-          </Link>
+                Dashboard
+              </Link>
             </button>
             <button
               className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              onClick={() => signOut({ callbackUrl: '/' })}
+              onClick={() => signOut({ callbackUrl: "/" })}
             >
               <LogOut className="h-4 w-4" />
               <p className="text-sm">Logout</p>

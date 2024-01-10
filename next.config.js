@@ -5,6 +5,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true
   },
+  experimental: {
+    serverActions: true,
+  },
   images: {
     domains: ["lh3.googleusercontent.com", "vercel.com"],
   },
