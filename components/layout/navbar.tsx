@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import useScroll from "@/lib/hooks/use-scroll";
 import UserDropdown from "./user-dropdown";
 import { Session } from "next-auth";
+import { Logo } from "../logo";
 
 export default function NavBar({ session }: { session: Session | null }) {
   const scrolled = useScroll(50);
@@ -12,13 +12,7 @@ export default function NavBar({ session }: { session: Session | null }) {
   return (
     <>
       <Link href="/" className="flex items-center font-display text-2xl">
-        <Image
-          src="/logo.png"
-          alt="Precedent logo"
-          width="30"
-          height="30"
-          className="mr-2 rounded-sm"
-        ></Image>
+       <Logo />
         <p>Logo</p>
       </Link>
       <div>

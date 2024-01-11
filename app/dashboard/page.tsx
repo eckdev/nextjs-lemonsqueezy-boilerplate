@@ -8,9 +8,8 @@ import { DashboardHeader } from "@/components/ui/header";
 
 const Dashboard = async () => {
   const session = await getServerSession(authOptions) as Session;
-  if (!session) {
-    redirect("/login");
-  }
+  if (!session) { redirect("/login"); }
+  if (!session.user.subscriptionId) { redirect("/subscription"); }
   
   return (
     <>

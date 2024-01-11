@@ -5,15 +5,16 @@ import { Form } from "../ui/form";
 import { useForm } from "react-hook-form";
 import { signInWithPasswordSchema } from "validations/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import LoadingDots from "../shared/loading-dots";
 import { signIn } from "next-auth/react";
 import FormInput from "../ui/form/input";
+import { Session } from "next-auth";
 
 type SignInWithEmailFormInputs = z.infer<typeof signInWithPasswordSchema>;
 
-const LoginForm = () => {
+const LoginForm = ({ session }: { session: Session | null }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const form = useForm<SignInWithEmailFormInputs>({
@@ -28,18 +29,11 @@ const LoginForm = () => {
     const { email, password } = formData;
     setLoading(true);
     signIn("credentials", {
-      redirect: false,
+      redirect: true,
       email,
       password,
-      // @ts-ignore
-    }).then(({ error }) => {
-      if (error) {
-        setLoading(false);
-      } else {
-        router.refresh();
-        router.push("/subscription");
-      }
-    });
+      callbackUrl: session?.user.subscriptionId ?  "/dashboard" : "/subscription",
+    })
   };
 
   return (

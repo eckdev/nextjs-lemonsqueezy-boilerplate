@@ -48,10 +48,33 @@ export const authOptions:NextAuthOptions = {
     // Add user ID to session from token
     session: async ({ session, token }) => {
       if (session?.user) {
-        session.user.id = token.sub
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.subscriptionId = token.subscriptionId;
       }
       return session
-    }
+    },
+    async jwt({ token, user }) {
+      const dbUser = await prisma.user.findFirst({
+        where: {
+          email: token.email as string,
+        },
+      })
+
+      if (!dbUser) {
+        if (user) {
+          token.id = user?.id
+        }
+        return token
+      }
+
+      return {
+        id: dbUser.id,
+        name: dbUser.name,
+        email: dbUser.email,
+        subscriptionId: dbUser.subscriptionId as string
+      }
+    },
   }
 }
 

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { UserAvatar } from "../shared/user-avatar";
 
 export default function UserDropdown({ session }: { session: Session }) {
-  const { email, image } = session?.user || {};
+  const { email, subscriptionId } = session?.user || {};
   const [openPopover, setOpenPopover] = useState(false);
 
   if (!email) return null;
@@ -29,24 +29,42 @@ export default function UserDropdown({ session }: { session: Session }) {
                 {session?.user?.email}
               </p>
             </div>
-            <button
-              className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              disabled
-            >
-              <LayoutDashboard className="h-4 w-4" />
-              <Link href="/dashboard" className="text-sm">
-                Dashboard
-              </Link>
-            </button>
-            <button
-              className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              disabled
-            >
-              <CreditCard className="h-4 w-4" />
-              <Link href="/dashboard/billing" className="text-sm">
-                Billing
-              </Link>
-            </button>
+            {
+              !subscriptionId && (
+                <button
+                className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
+                disabled
+              >
+                <CreditCard className="h-4 w-4" />
+                <Link href="/subscription" className="text-sm">
+                  Subscription
+                </Link>
+              </button>
+              )
+            }
+            {subscriptionId && (
+              <>
+                <button
+                  className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
+                  disabled
+                >
+                  <LayoutDashboard className="h-4 w-4" />
+                  <Link href="/dashboard" className="text-sm">
+                    Dashboard
+                  </Link>
+                </button>
+                <button
+                  className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
+                  disabled
+                >
+                  <CreditCard className="h-4 w-4" />
+                  <Link href="/dashboard/billing" className="text-sm">
+                    Billing
+                  </Link>
+                </button>
+              </>
+            )}
+
             <button
               className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
               onClick={() => signOut({ callbackUrl: "/" })}
