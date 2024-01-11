@@ -14,10 +14,10 @@ export default async function Home() {
           >
             Follow along on Twitter
           </Link>
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="animate-fade-up font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit
           </h1>
-          <p className="text-muted-foreground max-w-[42rem] leading-normal sm:text-xl sm:leading-8">
+          <p className="animate-fade-up text-muted-foreground max-w-[42rem] leading-normal sm:text-xl sm:leading-8" style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lacus volutpat, consectetur mauris vitae, lobortis eros. Cras quam nulla, faucibus ut augue ut, tincidunt porta quam
           </p>
           <div className="space-x-4">
