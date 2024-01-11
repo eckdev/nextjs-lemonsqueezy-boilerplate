@@ -1,4 +1,6 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { DashboardHeader } from '@/components/ui/header';
+import { DashboardShell } from '@/components/ui/shell';
 import { Session, getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react'
@@ -11,7 +13,15 @@ const Settings = async (props: Props) => {
       redirect("/login");
     }
   return (
-    <div>Settings</div>
+    <DashboardShell>
+      <DashboardHeader
+        heading="Settings"
+        text="Manage account and website settings."
+      />
+      <div className="grid gap-10">
+        <span>Settings.</span>
+      </div>
+    </DashboardShell>
   )
 }
 
