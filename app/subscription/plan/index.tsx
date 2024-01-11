@@ -10,12 +10,14 @@ type PlanProps = {
     name: string
     email:string
     variantId: string
+    price: number
 };
 
 export const Plan = ({
     name,
     email,
-    variantId
+    variantId,
+    price
 }: PlanProps) => {
     const [loading, setLoading] = useState(false)
   const Icon = Icons["check"];
@@ -65,7 +67,7 @@ export const Plan = ({
       </div>
       <div className="flex flex-col gap-4 text-center">
         <div>
-          <h4 className="text-7xl font-bold">$10</h4>
+          <h4 className="text-7xl font-bold">${price}</h4>
           <p className="text-muted-foreground text-sm font-medium">
             Billed {name}
           </p>
