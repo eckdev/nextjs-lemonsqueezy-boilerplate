@@ -6,6 +6,8 @@ import React from "react";
 import { getUserSubscriptionPlan } from "@/lib/subscription";
 import { formatDate } from "@/lib/utils";
 import SubscriptionForm from "./subscription-form";
+import { DashboardShell } from "@/components/ui/shell";
+import { DashboardHeader } from "@/components/ui/header";
 
 const Billing = async () => {
   const session = (await getServerSession(authOptions)) as Session;
@@ -19,17 +21,18 @@ const Billing = async () => {
 
   return (
     <>
-      <div className="grid items-start gap-8">
-        <div className="flex items-center justify-between px-2">
-          <div className="grid gap-1">
-            <h1 className="font-heading text-3xl md:text-4xl font-extrabold">Billing</h1>
-            <p className="text-muted-foreground text-lg">
-              Manage billing and your subscription plan.
-            </p>
-          </div>
+      <DashboardShell>
+        <DashboardHeader
+          heading="Billing"
+          text="Manage billing and your subscription plan."
+        />
+        <div className="grid gap-8">
+          <SubscriptionForm
+            email={session.user?.email as string}
+            subscriptionPlan={subscription}
+          />
         </div>
-        <SubscriptionForm email={session.user?.email as string} subscriptionPlan={subscription} />
-      </div>
+      </DashboardShell>
     </>
   );
 };

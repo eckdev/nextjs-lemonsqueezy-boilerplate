@@ -1,6 +1,7 @@
 import "./globals.css";
 import cx from "classnames";
 import { sfPro, inter } from "./fonts";
+import { Toaster } from "@/components/ui/toast/toaster";
 
 export const metadata = {
   title: "Precedent - Building blocks for your Next.js project",
@@ -19,6 +20,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={cx(sfPro.variable, inter.variable)}>
         {children}
+        <Toaster />
         <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
       </body>
     </html>
