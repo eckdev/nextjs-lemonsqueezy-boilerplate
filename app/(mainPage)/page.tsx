@@ -1,22 +1,29 @@
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+
 export default async function Home() {
   return (
     <>
-      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <div className="z-10 w-full max-w-xl px-5 xl:px-0">
-            <h1
-              className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
-              style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
-            >
-              Personalized cover letter
-            </h1>
-            <p
-              className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
-              style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
-            >
-              An opinionated collection of components, hooks, and utilities for
-              your Next.js project.
-            </p>
+          <Link
+            href={"#"}
+            className="bg-muted rounded-2xl px-4 py-1.5 text-sm font-medium"
+            target="_blank"
+          >
+            Follow along on Twitter
+          </Link>
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </h1>
+          <p className="text-muted-foreground max-w-[42rem] leading-normal sm:text-xl sm:leading-8">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lacus volutpat, consectetur mauris vitae, lobortis eros. Cras quam nulla, faucibus ut augue ut, tincidunt porta quam
+          </p>
+          <div className="space-x-4">
+            <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
+              Get started
+            </Link>
           </div>
         </div>
       </section>
