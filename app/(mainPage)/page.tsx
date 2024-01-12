@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default async function Home() {
   return (
-    <div className="w-full dark:bg-black bg-white  dark:bg-grid-white/[0.06] bg-grid-black/[0.06] relative">
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+    <div className="w-full dark:bg-primary bg-white  dark:bg-grid-white/[0.06] bg-grid-black/[0.06] relative">
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-primary bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 relative z-20">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <Link
