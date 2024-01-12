@@ -76,7 +76,7 @@ const ResetPasswordForm = ({resetPasswordToken}:PasswordUpdateFormProps) => {
           className={`${
             loading
               ? "cursor-not-allowed border-gray-200 bg-gray-100"
-              : "border-border bg-primary text-primary-foreground hover:bg-white hover:text-black"
+              : "border-border bg-primary text-primary-foreground hover:bg-background hover:text-black"
           } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
         >
           {loading ? <LoadingDots color="#808080" /> : <p>{"Update Password"}</p>}

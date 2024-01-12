@@ -21,7 +21,7 @@ export default function NavBar({ session }: { session: Session | null }) {
         ) : (
           <>
             <Link href={"/login"}>
-              <button className="rounded-full border border-border bg-primary text-primary-foreground p-1.5 px-4 text-sm transition-all hover:bg-white hover:text-black">
+              <button className="rounded-full border border-border bg-primary text-primary-foreground p-1.5 px-4 text-sm transition-all hover:bg-background hover:text-black">
                 Sign In
               </button>
             </Link>

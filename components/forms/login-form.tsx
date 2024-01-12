@@ -59,14 +59,14 @@ const LoginForm = ({ session }: { session: Session | null }) => {
           className={`${
             loading
               ? "cursor-not-allowed border-gray-200 bg-gray-100"
-              : "border-border bg-primary text-primary-foreground hover:bg-white hover:text-black"
+              : "border-border bg-primary text-primary-foreground hover:bg-background hover:text-black"
           } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
         >
           {loading ? <LoadingDots color="#808080" /> : <p>{"Sign In"}</p>}
         </button>
         <div className="text-muted-foreground grid w-full text-sm max-sm:max-w-[340px] max-sm:px-10">
           <div>
-            <span className="text-center text-sm text-gray-600">
+            <span className="text-center text-sm text-muted-foreground">
               Don&apos;t have an account?{" "}
               <Link href="/register" className="font-semibold text-gray-800 hover:underline">
                 Sign up
