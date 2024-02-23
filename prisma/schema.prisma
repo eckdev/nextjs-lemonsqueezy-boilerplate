@@ -17,12 +17,45 @@ model User {
   id            String    @id @default(cuid())
   name          String?
   email         String   @unique
-  password      String
+  emailVerified DateTime?
+  password      String?
   resetPasswordToken            String?     @unique @map("reset_password_token")
   resetPasswordTokenExpiry      DateTime?   @map("reset_password_token_expiery")
+  image                         String?
 
   customerId       String?   @unique
   subscriptionId   String?   @unique
   variantId        Int?
   currentPeriodEnd DateTime?
+  accounts                      Account[]
+  sessions                      Session[]
+}
+
+model Account {
+  id                            String      @id @default(cuid())
+  userId                        String      @map("user_id")
+  type                          String
+  provider                      String
+  providerAccountId             String      @map("provider_account_id")
+  refresh_token                 String?     @db.Text
+  access_token                  String?     @db.Text
+  expires_at                    Int?
+  token_type                    String?
+  scope                         String?
+  id_token                      String?     @db.Text
+  session_state                 String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id                            String      @id @default(cuid())
+  sessionToken                  String      @unique @map("session_token")
+  userId                        String      @map("user_id")
+  expires                       DateTime
+  user                          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
 }

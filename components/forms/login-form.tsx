@@ -37,6 +37,8 @@ const LoginForm = ({ session }: { session: Session | null }) => {
   };
 
   return (
+    <>
+
     <Form {...form}>
       <form
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
@@ -89,6 +91,21 @@ const LoginForm = ({ session }: { session: Session | null }) => {
         </div>
       </form>
     </Form>
+    <button
+          onClick={() => {
+            signIn('google',{
+              callbackUrl: '/dashboard'
+            })
+          }}
+          className={`${
+            loading
+              ? "cursor-not-allowed border-gray-200 bg-gray-100"
+              : "border-border bg-primary text-primary-foreground hover:bg-background hover:text-black"
+          } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
+        >
+          {loading ? <LoadingDots color="#808080" /> : <p>{"google In"}</p>}
+        </button>
+    </>
   );
 };
 
