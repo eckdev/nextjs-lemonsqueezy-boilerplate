@@ -18,6 +18,7 @@ export default async function SubscriptionPage() {
   }
 
   const variants = await client.listAllVariants();
+  console.log(variants.data)
   const packages = variants.data.filter(
     (v) => v.attributes.status === "published",
   );
@@ -40,6 +41,7 @@ export default async function SubscriptionPage() {
             variantId={item.id}
             email={session.user?.email as string}
             price={(item.attributes.price / 100)}
+            trialInterval={item.attributes.trial_interval_count}
           />
         ))}
     </section>

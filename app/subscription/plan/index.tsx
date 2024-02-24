@@ -11,13 +11,17 @@ type PlanProps = {
     email:string
     variantId: string
     price: number
+    hasTrial?: boolean
+    trialInterval?: number
 };
 
 export const Plan = ({
     name,
     email,
     variantId,
-    price
+    price,
+    hasTrial,
+    trialInterval
 }: PlanProps) => {
     const [loading, setLoading] = useState(false)
   const Icon = Icons["check"];
@@ -45,7 +49,7 @@ export const Plan = ({
         </h3>
         <ul className="text-muted-foreground grid gap-3 text-sm sm:grid-cols-2">
           <li className="flex items-center">
-            <Icon className="mr-2 h-4 w-4" /> Unlimited Posts
+            <Icon className="mr-2 h-4 w-4" /> Free Trial {trialInterval} Days
           </li>
           <li className="flex items-center">
             <Icon className="mr-2 h-4 w-4" /> Unlimited Users

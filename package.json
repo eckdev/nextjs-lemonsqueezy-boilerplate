@@ -70,7 +70,7 @@
   },
   "overrides": {
     "next-auth": {
-      "next": "13.5.5-canary.19"
+      "next": "14.1.0"
     }
   }
 }
