@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import LoadingDots from "../shared/loading-dots";
 import FormInput from "../ui/form/input";
+import { toast } from "../ui/toast/use-toast";
 
 type SignUpWithEmailFormInputs = z.infer<typeof signUpWithPasswordSchema>;
 
@@ -39,13 +40,17 @@ const RegisterForm = () => {
     }).then(async (res) => {
       setLoading(false);
       if (res.status === 200) {
-        //toast.success("Account created! Redirecting to login...");
         setTimeout(() => {
           router.push("/login");
-        }, 2000);
+        }, 1000);
       } else {
+        form.reset()
         const { error } = await res.json();
-        //toast.error(error);
+        return toast({
+          title: "Something went wrong.",
+          description: error,
+          variant: "destructive",
+        })
       }
     });
   };

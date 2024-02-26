@@ -13,12 +13,17 @@ import { Session } from "next-auth";
 import { Google } from "@/components/shared/icons";
 import { buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
+import { toast } from "@/components/ui/toast/use-toast";
+import { useRouter } from "next/navigation";
+
 
 type SignInWithEmailFormInputs = z.infer<typeof signInWithPasswordSchema>;
 
 const LoginForm = ({ session }: { session: Session | null }) => {
   const [loading, setLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+
+  const router = useRouter();
   const form = useForm<SignInWithEmailFormInputs>({
     resolver: zodResolver(signInWithPasswordSchema),
     defaultValues: {
@@ -27,17 +32,29 @@ const LoginForm = ({ session }: { session: Session | null }) => {
     },
   });
 
-  const onSubmit = (formData: SignInWithEmailFormInputs) => {
+  const onSubmit = async (formData: SignInWithEmailFormInputs) => {
     const { email, password } = formData;
     setLoading(true);
-    signIn("credentials", {
-      redirect: true,
+    const signInResult = await signIn("credentials", {
+      redirect: false,
       email,
       password,
       callbackUrl: session?.user.subscriptionId
         ? "/dashboard"
         : "/subscription",
     });
+
+    setLoading(false);
+    if (signInResult?.error) {
+      return toast({
+        title: "Something went wrong.",
+        description: "Your sign in request failed. Please try again.",
+        variant: "destructive",
+      })
+    }
+    else{
+      router.push(signInResult?.url as string)
+    }
   };
 
   return (
