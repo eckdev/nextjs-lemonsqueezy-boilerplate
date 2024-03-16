@@ -11,47 +11,66 @@ import LoadingDots from "../shared/loading-dots";
 import FormInput from "../ui/form/input";
 import { passwordUpdateSchema } from "validations/auth";
 import { getUserByResetPasswordToken } from "actions/user";
+import { resetPassword, updatePassword } from "actions/email";
+import { toast } from "../ui/toast/use-toast";
 
-type PasswordUpdateFormInputs = z.infer<typeof passwordUpdateSchema>
+type PasswordUpdateFormInputs = z.infer<typeof passwordUpdateSchema>;
 interface PasswordUpdateFormProps {
-    resetPasswordToken: string
-  }
-const ResetPasswordForm = ({resetPasswordToken}:PasswordUpdateFormProps) => {
+  resetPasswordToken: string;
+}
+const ResetPasswordForm = ({ resetPasswordToken }: PasswordUpdateFormProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const form = useForm<PasswordUpdateFormInputs>({
     resolver: zodResolver(passwordUpdateSchema),
     defaultValues: {
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     },
   });
 
   const onSubmit = async (formData: PasswordUpdateFormInputs) => {
-    const { password } = formData
+    const { password, confirmPassword } = formData;
     setLoading(true);
-    // const user = await getUserByResetPasswordToken(resetPasswordToken)
-    // if (!user) { return; }
-    // const resetPasswordExpiry = user.resetPasswordTokenExpiry
-    // if (!resetPasswordExpiry || resetPasswordExpiry < new Date()) {return;}
+    try {
+      const message = await updatePassword({
+        password: password,
+        confirmPassword: confirmPassword,
+        resetPasswordToken,
+      });
 
-    // const passwordHash = await hash(password, 10)
-    // await prisma.user.update({
-    //     where: {
-    //       id: user.id,
-    //     },
-    //     data: {
-    //       password: passwordHash,
-    //       resetPasswordToken: null,
-    //       resetPasswordTokenExpiry: null,
-    //     },
-    //   })
-
-    setTimeout(() => {
-        router.push("/login")
-    }, 1000);
-  }
-
+      switch (message) {
+        case "expired":
+          toast({
+            title: "Token is missing or expired",
+            description: "Please try again",
+            variant: "destructive",
+          });
+          router.push("/signin");
+          break;
+        case "success":
+          toast({
+            title: "Success!",
+            description: "You can now sign in with new password",
+          });
+          router.push("/signin");
+          break;
+        default:
+          toast({
+            title: "Error updating password",
+            description: "Please try again",
+            variant: "destructive",
+          });
+      }
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again",
+        variant: "destructive",
+      });
+      console.error(error);
+    }
+  };
 
   return (
     <Form {...form}>
@@ -79,7 +98,11 @@ const ResetPasswordForm = ({resetPasswordToken}:PasswordUpdateFormProps) => {
               : "border-border bg-primary text-primary-foreground hover:bg-background hover:text-black"
           } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
         >
-          {loading ? <LoadingDots color="#808080" /> : <p>{"Update Password"}</p>}
+          {loading ? (
+            <LoadingDots color="#808080" />
+          ) : (
+            <p>{"Update Password"}</p>
+          )}
         </button>
       </form>
     </Form>

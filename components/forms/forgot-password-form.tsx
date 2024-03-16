@@ -9,7 +9,7 @@ import LoadingDots from "../shared/loading-dots";
 import FormInput from "../ui/form/input";
 import { passwordResetSchema } from "validations/auth";
 import { toast } from "../ui/toast/use-toast";
-import { resendEmailVerificationLink } from "actions/email";
+import { resetPassword } from "actions/email";
 
 type PasswordResetFormInputs = z.infer<typeof passwordResetSchema>
 
@@ -26,7 +26,7 @@ const ForgotPasswordForm = () => {
   const onSubmit = async (formData: PasswordResetFormInputs) => {
     try {
       setLoading(true)
-      const message = await resendEmailVerificationLink({
+      const message = await resetPassword({
         email: formData.email,
       })
       alert(message)

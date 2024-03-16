@@ -1,51 +1,99 @@
-"use server"
+"use server";
 
-import crypto from "crypto"
+import crypto from "crypto";
 
-import { getUserByEmail } from "./user"
-import {
-  emailVerificationSchema,
-  type EmailVerificationFormInput,
-} from "validations/email"
+import { getUserByEmail, getUserByResetPasswordToken } from "./user";
 
 import prisma from "@/lib/prisma";
-import { resend } from "../config/email"
-import { VerificationEmail } from "@/components/emails/verification-email"
+import { resend } from "../config/email";
+import { ResetPasswordEmail } from "@/components/emails/reset-password-email";
+import {
+  PasswordResetFormInput,
+  PasswordUpdateFormInputExtended,
+  passwordResetSchema,
+  passwordUpdateSchemaExtended,
+} from "validations/auth";
+import { hash } from "bcrypt";
 
-export async function resendEmailVerificationLink(
-  rawInput: EmailVerificationFormInput
+export async function resetPassword(
+  rawInput: PasswordResetFormInput,
 ): Promise<"invalid-input" | "not-found" | "error" | "success"> {
   try {
-    const validatedInput = emailVerificationSchema.safeParse(rawInput)
-    if (!validatedInput.success) return "invalid-input"
+    const validatedInput = passwordResetSchema.safeParse(rawInput);
+    if (!validatedInput.success) return "invalid-input";
 
-    const user = await getUserByEmail(validatedInput.data.email)
-    if (!user) return "not-found"
+    const user = await getUserByEmail(validatedInput.data.email);
+    if (!user) return "not-found";
 
-    const emailVerificationToken = crypto.randomBytes(32).toString("base64url")
+    const today = new Date();
+    const resetPasswordToken = crypto.randomBytes(32).toString("base64url");
+    const resetPasswordTokenExpiry = new Date(
+      today.setDate(today.getDate() + 1),
+    ); // 24 hours from now
 
     const userUpdated = await prisma.user.update({
       where: {
-        email: validatedInput.data.email,
+        id: user.id,
       },
       data: {
-        emailVerified: new Date(),
+        resetPasswordToken,
+        resetPasswordTokenExpiry,
       },
-    })
+    });
 
     const emailSent = await resend.emails.send({
       from: process.env.RESEND_EMAIL_FROM as string,
       to: [validatedInput.data.email],
-      subject: "Verify your email address",
-      react: VerificationEmail({
+      subject: "Reset your password",
+      react: ResetPasswordEmail({
         email: validatedInput.data.email,
-        emailVerificationToken,
+        resetPasswordToken,
       }),
-    })
+    });
 
-    return userUpdated && emailSent ? "success" : "error"
+    return userUpdated && emailSent ? "success" : "error";
   } catch (error) {
-    console.error(error)
-    throw new Error("Error resending email verification link")
+    console.error(error);
+    return "error";
+  }
+}
+
+export async function updatePassword(
+  rawInput: PasswordUpdateFormInputExtended,
+): Promise<"invalid-input" | "not-found" | "expired" | "error" | "success"> {
+  try {
+    const validatedInput = passwordUpdateSchemaExtended.safeParse(rawInput);
+    if (
+      !validatedInput.success ||
+      validatedInput.data.password !== validatedInput.data.confirmPassword
+    )
+      return "invalid-input";
+
+    const user = await getUserByResetPasswordToken(
+      validatedInput.data.resetPasswordToken,
+    );
+    if (!user) return "not-found";
+
+    const resetPasswordExpiry = user.resetPasswordTokenExpiry;
+    if (!resetPasswordExpiry || resetPasswordExpiry < new Date())
+      return "expired";
+
+    const passwordHash = await hash(validatedInput.data.password, 10);
+
+    const userUpdated = await prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        password: passwordHash,
+        resetPasswordToken: null,
+        resetPasswordTokenExpiry: null,
+      },
+    });
+
+    return userUpdated ? "success" : "error";
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error updating password");
   }
 }
