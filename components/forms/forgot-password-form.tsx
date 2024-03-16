@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import LoadingDots from "../shared/loading-dots";
 import FormInput from "../ui/form/input";
 import { passwordResetSchema } from "validations/auth";
+import { toast } from "../ui/toast/use-toast";
+import { resendEmailVerificationLink } from "actions/email";
 
 type PasswordResetFormInputs = z.infer<typeof passwordResetSchema>
 
@@ -21,14 +23,41 @@ const ForgotPasswordForm = () => {
     },
   });
 
-  const onSubmit = (formData: PasswordResetFormInputs) => {
-    const { email } = formData
-    setLoading(true);
-    alert('Success!.Check your email for a password reset link')
+  const onSubmit = async (formData: PasswordResetFormInputs) => {
+    try {
+      setLoading(true)
+      const message = await resendEmailVerificationLink({
+        email: formData.email,
+      })
+      alert(message)
 
-    setTimeout(() => {
-        router.push("/login")
-    }, 1000);
+      switch (message) {
+        case "success":
+          toast({
+            title: "Success!",
+            description: "Check your inbox and verify your email address",
+          })
+          router.push("/login")
+          break
+        default:
+          toast({
+            title: "Error sending verification link",
+            description: "Please try again",
+            variant: "destructive",
+          })
+          router.push("/register")
+      }
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again",
+        variant: "destructive",
+      })
+      console.error(error)
+    }
+    finally {
+      setLoading(false)
+    }
   }
 
 
