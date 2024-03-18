@@ -16,10 +16,10 @@ export default async function Home() {
             Follow along on Twitter
           </Link>
           <h1 className="animate-fade-up font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            <span className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text font-extrabold text-transparent">Next.JS SaaS Boilerplate</span> for building awesome applications
           </h1>
           <p className="animate-fade-up text-muted-foreground max-w-[42rem] leading-normal sm:text-xl sm:leading-8" style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lacus volutpat, consectetur mauris vitae, lobortis eros. Cras quam nulla, faucibus ut augue ut, tincidunt porta quam
+            Speed up your saas development and save months of work.
           </p>
           <div className="space-x-4">
             <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
