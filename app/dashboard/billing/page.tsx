@@ -14,7 +14,7 @@ const Billing = async () => {
   if (!session) {
     redirect("/login");
   }
-  if (!session.user.subscriptionId) { redirect("/subscription"); }
+  // #DEMO MODE if (!session.user.subscriptionId) { redirect("/subscription"); }
 
   const subscription = await getUserSubscriptionPlan(
     session.user?.email as string,

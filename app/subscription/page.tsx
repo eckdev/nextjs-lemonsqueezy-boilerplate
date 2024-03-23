@@ -2,9 +2,9 @@ import { Plan } from "./plan";
 import { Session, getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import { getUserSubscriptionPlan } from "@/lib/subscription";
 import { getUserByEmail } from "actions/user";
 import { client } from "@/lib/lemon";
+import FreePlanButton from "./plan/freePlan";
 
 export default async function SubscriptionPage() {
   const session = (await getServerSession(authOptions)) as Session;
@@ -18,7 +18,6 @@ export default async function SubscriptionPage() {
   }
 
   const variants = await client.listAllVariants();
-  console.log(variants.data)
   const packages = variants.data.filter(
     (v) => v.attributes.status === "published",
   );
@@ -40,10 +39,12 @@ export default async function SubscriptionPage() {
             name={item.attributes.name}
             variantId={item.id}
             email={session.user?.email as string}
-            price={(item.attributes.price / 100)}
+            price={item.attributes.price / 100}
             trialInterval={item.attributes.trial_interval_count}
           />
         ))}
+
+      <FreePlanButton />
     </section>
   );
 }
