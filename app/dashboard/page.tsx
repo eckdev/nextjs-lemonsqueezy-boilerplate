@@ -5,6 +5,7 @@ import { Session, getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { DashboardShell } from "@/components/ui/shell";
 import { DashboardHeader } from "@/components/ui/header";
+import { Chart } from "@/components/chart";
 
 const Dashboard = async () => {
   const session = await getServerSession(authOptions) as Session;
@@ -20,6 +21,7 @@ const Dashboard = async () => {
       />
       <div className="grid gap-10">
         <span>Dashboard.</span>
+        <Chart />
       </div>
     </DashboardShell>
     </>
