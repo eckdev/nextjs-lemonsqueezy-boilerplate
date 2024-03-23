@@ -10,7 +10,7 @@ const FreePlanButton = () => {
       <Button
         variant={"default"}
         size={"default"}
-        className="h-10 w-40 border border-border hover:bg-background hover:text-black"
+        className="w-40"
         onClick={() => {
           router.push("/dashboard");
         }}

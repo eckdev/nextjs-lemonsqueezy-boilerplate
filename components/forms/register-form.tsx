@@ -10,6 +10,7 @@ import Link from "next/link";
 import LoadingDots from "../shared/loading-dots";
 import FormInput from "../ui/form/input";
 import { toast } from "../ui/toast/use-toast";
+import { Button } from "../ui/button";
 
 type SignUpWithEmailFormInputs = z.infer<typeof signUpWithPasswordSchema>;
 
@@ -79,16 +80,18 @@ const RegisterForm = () => {
           label="Confirm Password"
           control={form.control}
         />
-        <button
-          disabled={loading}
-          className={`${
+        <Button
+          variant={"default"}
+          size={"default"}
+          type="submit"
+          className={
             loading
               ? "cursor-not-allowed border-gray-200 bg-gray-100"
-              : "border-border bg-primary text-primary-foreground hover:bg-background hover:text-black"
-          } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
+              : "w-full"
+          }
         >
           {loading ? <LoadingDots color="#808080" /> : <p>{"Sign Up"}</p>}
-        </button>
+        </Button>
         <p className="text-center text-sm text-muted-foreground">
           Do you have an account?{" "}
           <Link href="/login" className="font-semibold text-gray-800">

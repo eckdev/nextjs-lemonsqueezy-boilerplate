@@ -13,6 +13,7 @@ import { passwordUpdateSchema } from "validations/auth";
 import { getUserByResetPasswordToken } from "actions/user";
 import { resetPassword, updatePassword } from "actions/email";
 import { toast } from "../ui/toast/use-toast";
+import { Button } from "../ui/button";
 
 type PasswordUpdateFormInputs = z.infer<typeof passwordUpdateSchema>;
 interface PasswordUpdateFormProps {
@@ -90,20 +91,18 @@ const ResetPasswordForm = ({ resetPasswordToken }: PasswordUpdateFormProps) => {
           label="Confirm Password"
           control={form.control}
         />
-        <button
-          disabled={loading}
-          className={`${
+        <Button
+          variant={"default"}
+          size={"default"}
+          type="submit"
+          className={
             loading
               ? "cursor-not-allowed border-gray-200 bg-gray-100"
-              : "border-border bg-primary text-primary-foreground hover:bg-background hover:text-black"
-          } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
+              : "w-full"
+          }
         >
-          {loading ? (
-            <LoadingDots color="#808080" />
-          ) : (
-            <p>{"Update Password"}</p>
-          )}
-        </button>
+          {loading ? <LoadingDots color="#808080" /> : <p>{"Update Password"}</p>}
+        </Button>
       </form>
     </Form>
   );

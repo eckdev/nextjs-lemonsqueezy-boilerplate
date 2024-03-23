@@ -10,6 +10,7 @@ import FormInput from "../ui/form/input";
 import { passwordResetSchema } from "validations/auth";
 import { toast } from "../ui/toast/use-toast";
 import { resetPassword } from "actions/email";
+import { Button } from "../ui/button";
 
 type PasswordResetFormInputs = z.infer<typeof passwordResetSchema>
 
@@ -68,16 +69,18 @@ const ForgotPasswordForm = () => {
         className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
       >
         <FormInput type="text" name="email" label="Email" control={form.control} />
-        <button
-          disabled={loading}
-          className={`${
+        <Button
+          variant={"default"}
+          size={"default"}
+          type="submit"
+          className={
             loading
               ? "cursor-not-allowed border-gray-200 bg-gray-100"
-              : "border-border bg-primary text-primary-foreground hover:bg-background hover:text-black"
-          } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
+              : "w-full"
+          }
         >
           {loading ? <LoadingDots color="#808080" /> : <p>{"Reset Password"}</p>}
-        </button>
+        </Button>
       </form>
     </Form>
   );
