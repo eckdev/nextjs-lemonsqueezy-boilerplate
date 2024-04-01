@@ -1,3 +1,4 @@
+import { siteConfig } from "config/site";
 import { Logo } from "../logo";
 
 export default function Footer() {
@@ -5,7 +6,7 @@ export default function Footer() {
     <footer className="mt-32 flex flex-col items-center space-y-8 border-t-[0.5px] py-12">
       <Logo />
       <p className="text-sm text-zinc-500">
-        ©Company Name - All rights reserved
+        ©{siteConfig.name} - All rights reserved
       </p>
     </footer>
   );

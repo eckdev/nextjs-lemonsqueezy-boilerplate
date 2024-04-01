@@ -21,7 +21,7 @@ const Dashboard = async () => {
       />
       <div className="grid gap-10">
         <span>Dashboard.</span>
-        <Chart />
+        {/* <Chart /> */}
       </div>
     </DashboardShell>
     </>

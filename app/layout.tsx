@@ -3,12 +3,11 @@ import "./globals.css";
 import { sfPro, inter } from "./fonts";
 import { Toaster } from "@/components/ui/toast/toaster";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "config/site";
 
 export const metadata = {
-  title: "Site Title",
-  description:
-    "Site Description",
-  metadataBase: new URL("https://precedent.dev"),
+  title: siteConfig.name,
+  description:siteConfig.description,
   themeColor: "#FFF",
 };
 
