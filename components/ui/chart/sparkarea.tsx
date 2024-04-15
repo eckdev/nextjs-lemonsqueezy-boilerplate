@@ -31,18 +31,18 @@ const chartdata = [
       month: 'Jul 21',
       Performance: 3490,
     },
-  ];
+];
   
 
-export const Chart = (props: Props) => {
+export const SparkArea = (props: Props) => {
   return (
     <div className="flex justify-center">
       <SparkAreaChart
         data={chartdata}
         categories={['Performance']}
         index={'month'}
-        colors={['#ff0000']}
-        className="h-10 w-40"
+        colors={['#2e9fff']}
+        className="mt-4 h-10 w-full"
       />
     </div>
 
