@@ -10,7 +10,6 @@ import { Chart } from "@/components/chart";
 const Dashboard = async () => {
   const session = await getServerSession(authOptions) as Session;
   if (!session) { redirect("/login"); }
-  // #DEMO MODE if (!session.user.subscriptionId) { redirect("/subscription"); }
   
   return (
     <>

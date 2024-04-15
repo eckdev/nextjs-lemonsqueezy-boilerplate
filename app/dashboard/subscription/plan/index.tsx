@@ -86,7 +86,7 @@ export const Plan = ({
           }
           onClick={onPlanClick}
         >
-          {loading ? <LoadingDots color="#808080" /> : <p>{"Get Started"}</p>}
+          {loading ? <LoadingDots color="#808080" /> : <p>{"Upgrade"}</p>}
         </Button>
       </div>
     </div>

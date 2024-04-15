@@ -13,8 +13,8 @@ export async function getUserSubscriptionPlan(email: string) {
   });
 
   if (!user) throw new Error("User not found");
-  if (!user.subscriptionId) {
-    throw new Error("Subscription not found");
+  if (!user?.subscriptionId) {
+    return;
   }
 
   // Check if user is on a pro plan.

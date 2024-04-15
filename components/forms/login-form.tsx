@@ -39,9 +39,7 @@ const LoginForm = ({ session }: { session: Session | null }) => {
       redirect: false,
       email,
       password,
-      callbackUrl: session?.user.subscriptionId
-        ? "/dashboard"
-        : "/subscription",
+      callbackUrl: "/dashboard",
     });
 
     setLoading(false);

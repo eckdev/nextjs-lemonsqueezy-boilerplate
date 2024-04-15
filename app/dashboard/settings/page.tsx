@@ -12,7 +12,7 @@ const Settings = async (props: Props) => {
     if (!session) {
       redirect("/login");
     }
-    if (!session.user.subscriptionId) { redirect("/subscription"); }
+
   return (
     <DashboardShell>
       <DashboardHeader

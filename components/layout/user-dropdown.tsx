@@ -29,22 +29,7 @@ export default function UserDropdown({ session }: { session: Session }) {
                 {session?.user?.email}
               </p>
             </div>
-            {
-              !subscriptionId && (
-                <button
-                className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-                disabled
-              >
-                <CreditCard className="h-4 w-4" />
-                <Link href="/subscription" className="text-sm">
-                  Subscription
-                </Link>
-              </button>
-              )
-            }
-            {subscriptionId && (
-              <>
-                <button
+            <button
                   className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
                   disabled
                 >
@@ -62,8 +47,6 @@ export default function UserDropdown({ session }: { session: Session }) {
                     Billing
                   </Link>
                 </button>
-              </>
-            )}
 
             <button
               className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"

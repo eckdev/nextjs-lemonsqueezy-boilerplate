@@ -4,7 +4,6 @@ import { Session, getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 import { getUserSubscriptionPlan } from "@/lib/subscription";
-import { formatDate } from "@/lib/utils";
 import SubscriptionForm from "./subscription-form";
 import { DashboardShell } from "@/components/ui/shell";
 import { DashboardHeader } from "@/components/ui/header";
@@ -14,7 +13,6 @@ const Billing = async () => {
   if (!session) {
     redirect("/login");
   }
-  // #DEMO MODE if (!session.user.subscriptionId) { redirect("/subscription"); }
 
   const subscription = await getUserSubscriptionPlan(
     session.user?.email as string,
