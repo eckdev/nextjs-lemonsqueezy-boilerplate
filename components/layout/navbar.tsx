@@ -14,7 +14,6 @@ export default function NavBar({ session }: { session: Session | null }) {
     <>
       <Link href="/" className="font-display flex items-center text-2xl">
         <Logo />
-        <p>Logo</p>
       </Link>
       <div>
         {session ? (

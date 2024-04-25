@@ -14,12 +14,12 @@ export default function ResetPassword({
         <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-background px-4 py-6 pt-8 text-center sm:px-16">
           <Link href="/">
             <Image
-              src="/logo.png"
+              src="/clogo.png"
               priority
-              alt="Logo"
-              className="h-10 w-10 rounded-full"
-              width={20}
-              height={20}
+              alt="Saas Boilerplate Logo"
+              className="mb-4"
+              width={250}
+              height={125}
             />
           </Link>
           <h3 className="text-xl font-semibold">Password Reset</h3>

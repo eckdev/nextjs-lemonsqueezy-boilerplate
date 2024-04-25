@@ -4,63 +4,63 @@ import { AreaChart } from '@tremor/react';
 const chartdata = [
   {
     date: 'Jan 22',
-    SemiAnalysis: 2890,
-    'The Pragmatic Engineer': 2338,
+    'Page views': 2890,
+    'Unique visitors': 2338,
   },
   {
     date: 'Feb 22',
-    SemiAnalysis: 2756,
-    'The Pragmatic Engineer': 2103,
+    'Page views': 2756,
+    'Unique visitors': 2103,
   },
   {
     date: 'Mar 22',
-    SemiAnalysis: 3322,
-    'The Pragmatic Engineer': 2194,
+    'Page views': 3322,
+    'Unique visitors': 2194,
   },
   {
     date: 'Apr 22',
-    SemiAnalysis: 3470,
-    'The Pragmatic Engineer': 2108,
+    'Page views': 3470,
+    'Unique visitors': 2108,
   },
   {
     date: 'May 22',
-    SemiAnalysis: 3475,
-    'The Pragmatic Engineer': 1812,
+    'Page views': 3475,
+    'Unique visitors': 1812,
   },
   {
     date: 'Jun 22',
-    SemiAnalysis: 3129,
-    'The Pragmatic Engineer': 1726,
+    'Page views': 3129,
+    'Unique visitors': 1726,
   },
   {
     date: 'Jul 22',
-    SemiAnalysis: 3490,
-    'The Pragmatic Engineer': 1982,
+    'Page views': 3490,
+    'Unique visitors': 1982,
   },
   {
     date: 'Aug 22',
-    SemiAnalysis: 2903,
-    'The Pragmatic Engineer': 2012,
+    'Page views': 2903,
+    'Unique visitors': 2012,
   },
   {
     date: 'Sep 22',
-    SemiAnalysis: 2643,
-    'The Pragmatic Engineer': 2342,
+    'Page views': 2643,
+    'Unique visitors': 2342,
   },
   {
     date: 'Oct 22',
-    SemiAnalysis: 2837,
-    'The Pragmatic Engineer': 2473,
+    'Page views': 2837,
+    'Unique visitors': 2473,
   },
   {
     date: 'Nov 22',
-    SemiAnalysis: 2954,
-    'The Pragmatic Engineer': 3848,
+    'Page views': 2954,
+    'Unique visitors': 3848,
   },
   {
     date: 'Dec 22',
-    SemiAnalysis: 3239,
-    'The Pragmatic Engineer': 3736,
+    'Page views': 3239,
+    'Unique visitors': 3736,
   },
 ];
 
@@ -73,7 +73,7 @@ export function AreaChartHero() {
       className="h-80"
       data={chartdata}
       index="date"
-      categories={['SemiAnalysis', 'The Pragmatic Engineer']}
+      categories={['Page views', 'Unique visitors']}
       colors={['#2e9fff', 'rose']}
       showTooltip={false}
       valueFormatter={dataFormatter}

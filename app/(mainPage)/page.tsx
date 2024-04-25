@@ -14,7 +14,7 @@ export default async function Home() {
             className="flex bg-muted rounded-2xl px-4 py-1.5 text-sm font-medium"
             target="_blank"
           >
-            Follow along on  <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799" className="w-4 ml-2"><path fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"></path></svg>
+            Follow along on  <svg xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" viewBox="0 0 512 462.799" className="w-4 ml-2"><path fillRule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"></path></svg>
           </Link>
           <h1 className="animate-fade-up font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
             <span className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text font-extrabold text-transparent">Next.JS SaaS Boilerplate</span> for building awesome applications 🚀
