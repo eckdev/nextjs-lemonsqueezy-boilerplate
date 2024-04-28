@@ -5,7 +5,7 @@ function Logo() {
     <Image
       src="/clogo.png"
       alt="logo"
-      width="250"
+      width="200"
       height="125"
       className="mr-2"
     ></Image>

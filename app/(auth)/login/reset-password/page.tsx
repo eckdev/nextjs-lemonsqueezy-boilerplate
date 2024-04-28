@@ -18,7 +18,7 @@ export default function ResetPassword({
               priority
               alt="Saas Boilerplate Logo"
               className="mb-4"
-              width={250}
+              width={200}
               height={125}
             />
           </Link>

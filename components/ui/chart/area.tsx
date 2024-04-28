@@ -74,7 +74,7 @@ export function AreaChartHero() {
       data={chartdata}
       index="date"
       categories={['Page views', 'Unique visitors']}
-      colors={['#2e9fff', 'rose']}
+      colors={['#2e9fff', '#6c6cf5']}
       showTooltip={false}
       valueFormatter={dataFormatter}
       yAxisWidth={60}
