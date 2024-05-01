@@ -42,7 +42,7 @@ export async function resetPassword(
     });
 
     const emailSent = await resend.emails.send({
-      from: process.env.RESEND_EMAIL_FROM as string,
+      from: 'Hello <onboarding@resend.dev>',
       to: [validatedInput.data.email],
       subject: "Reset your password",
       react: ResetPasswordEmail({
