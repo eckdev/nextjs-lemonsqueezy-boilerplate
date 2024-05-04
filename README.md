@@ -3,7 +3,7 @@
 
 This repository serves as a starting point (or boilerplate) for any Next.js SaaS project that requires user authentication, management, and subscription payments. It currently uses Prisma with a Postgres database and is built using shadcn/ui components as well as custom sass components as needed.
 
-## Live: [https://nextjs-lemonsqueezy-boilerplate.vercel.app/](https://nextjs-lemonsqueezy-boilerplate.vercel.app/)
+## Live: [https://getsaasboilerplate.com/](https://getsaasboilerplate.com)
 
 ## The stack
 > Changes or additions to teh stack will be updated here
