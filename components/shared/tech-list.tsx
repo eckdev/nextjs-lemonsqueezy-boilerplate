@@ -4,7 +4,7 @@ type Props = {};
 
 const TechList = (props: Props) => {
   return (
-    <div className="overflow-hidden rounded-[30px] bg-[linear-gradient(90deg,#F7E8F3_0%,#E0E0FC_100%)] p-10 dark:bg-[linear-gradient(#2A3345,#2A3345)]">
+    <div className="overflow-hidden rounded-[30px] bg-gradient-to-r from-fuchsia-500 to-cyan-500 p-10 dark:bg-[linear-gradient(#2A3345,#2A3345)]">
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-6">
           <div className="animate-right flex flex-shrink-0 items-start justify-between gap-6">
@@ -17,7 +17,7 @@ const TechList = (props: Props) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_2228_7757)">
+                  <g clipPath="url(#clip0_2228_7757)">
                     <path
                       d="M31.9995 63.7705C49.6726 63.7705 63.9995 49.4436 63.9995 31.7705C63.9995 14.0974 49.6726 -0.229492 31.9995 -0.229492C14.3264 -0.229492 -0.000488281 14.0974 -0.000488281 31.7705C-0.000488281 49.4436 14.3264 63.7705 31.9995 63.7705Z"
                       fill="#635BFF"
@@ -67,14 +67,14 @@ const TechList = (props: Props) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_2228_8118)">
+                  <g clipPath="url(#clip0_2228_8118)">
                     <path
                       d="M63.6699 31.7705C63.6699 49.2279 49.5179 63.3799 32.0605 63.3799C14.6032 63.3799 0.451172 49.2279 0.451172 31.7705C0.451172 14.3131 14.6032 0.161133 32.0605 0.161133C49.5179 0.161133 63.6699 14.3131 63.6699 31.7705Z"
                       fill="#F3F4F6"
                       stroke="#E5E7EB"
                       strokeWidth="0.78125"
                     ></path>
-                    <g clip-path="url(#clip1_2228_8118)">
+                    <g clipPath="url(#clip1_2228_8118)">
                       <path
                         d="M32.6881 19.2453C31.2634 19.2217 30.1823 19.6206 29.3626 20.2454C29.3626 20.2454 19.2599 16.0647 19.7298 25.5032C19.8298 27.511 22.5952 40.6969 25.893 36.7142C27.0985 35.2581 28.2637 34.0264 28.2637 34.0264C28.842 34.4126 29.5349 34.6092 30.2611 34.5385L30.3175 34.4904C30.2996 34.671 30.3076 34.8478 30.34 35.0572C29.4903 36.0107 29.7401 36.1781 28.0416 36.5294C26.323 36.8854 27.3328 37.5187 27.9919 37.6842C28.7909 37.8851 30.64 38.1694 31.8892 36.4129L31.8394 36.6133C32.1727 36.8811 32.1502 38.5386 32.1976 39.7227C32.245 40.9067 32.3239 42.012 32.5642 42.6632C32.8046 43.3145 33.0881 44.9927 35.3203 44.5122C37.1863 44.1104 38.6125 43.5323 38.7425 38.1553C38.9199 36.6713 38.8664 36.4539 39.9668 36.6939L40.2461 36.7185C41.092 36.7571 42.199 36.5817 42.8491 36.2785C44.249 35.6263 45.079 34.5371 43.6988 34.8233C40.5508 35.4755 40.3344 34.405 40.3344 34.405C43.6584 29.4505 45.0484 23.161 43.8486 21.6214C40.5766 17.4223 34.9133 19.408 34.8185 19.4598L34.7884 19.4655C34.1664 19.3358 33.4702 19.2585 32.6881 19.2457"
                         fill="black"
@@ -178,7 +178,7 @@ const TechList = (props: Props) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_2228_8146)">
+                  <g clipPath="url(#clip0_2228_8146)">
                     <path
                       d="M32.0913 63.7705C49.7644 63.7705 64.0913 49.4436 64.0913 31.7705C64.0913 14.0974 49.7644 -0.229492 32.0913 -0.229492C14.4182 -0.229492 0.0913086 14.0974 0.0913086 31.7705C0.0913086 49.4436 14.4182 63.7705 32.0913 63.7705Z"
                       fill="black"
@@ -244,7 +244,7 @@ const TechList = (props: Props) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_2228_8084)">
+                  <g clipPath="url(#clip0_2228_8084)">
                     <path
                       d="M31.9995 63.7705C49.6726 63.7705 63.9995 49.4436 63.9995 31.7705C63.9995 14.0974 49.6726 -0.229492 31.9995 -0.229492C14.3264 -0.229492 -0.000488281 14.0974 -0.000488281 31.7705C-0.000488281 49.4436 14.3264 63.7705 31.9995 63.7705Z"
                       fill="#02ABFE"
@@ -286,12 +286,12 @@ const TechList = (props: Props) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_2228_8102)">
+                  <g clipPath="url(#clip0_2228_8102)">
                     <path
                       d="M63.6396 31.7705C63.6396 49.2279 49.4876 63.3799 32.0303 63.3799C14.5729 63.3799 0.420898 49.2279 0.420898 31.7705C0.420898 14.3131 14.5729 0.161133 32.0303 0.161133C49.4876 0.161133 63.6396 14.3131 63.6396 31.7705Z"
                       fill="#F3F4F6"
                       stroke="#E5E7EB"
-                      stroke-width="0.78125"
+                      strokeWidth="0.78125"
                     ></path>
                     <mask
                       id="mask0_2228_8102"
@@ -331,8 +331,8 @@ const TechList = (props: Props) => {
                       y2="21.2502"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#39DBB7"></stop>
-                      <stop offset="1" stop-color="#2D9EF1"></stop>
+                      <stop stopColor="#39DBB7"></stop>
+                      <stop offset="1" stopColor="#2D9EF1"></stop>
                     </linearGradient>
                     <linearGradient
                       id="paint1_linear_2228_8102"
@@ -342,8 +342,8 @@ const TechList = (props: Props) => {
                       y2="44.8417"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#6A15CD"></stop>
-                      <stop offset="1" stop-color="#D651E8"></stop>
+                      <stop stopColor="#6A15CD"></stop>
+                      <stop offset="1" stopColor="#D651E8"></stop>
                     </linearGradient>
                     <clipPath id="clip0_2228_8102">
                       <rect
@@ -377,7 +377,7 @@ const TechList = (props: Props) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_2228_7904)">
+                  <g clipPath="url(#clip0_2228_7904)">
                     <mask
                       id="mask0_2228_7904"
                       style={{ maskType: "luminance" }}
@@ -423,7 +423,7 @@ const TechList = (props: Props) => {
 
             <div className="flex flex-shrink-0 items-center gap-4 whitespace-nowrap rounded-[14px] bg-white py-3.5 pl-5 pr-6 shadow-[0px_6px_50px_-32px_rgba(107,110,148,0.15)] dark:bg-white/15">
               <div className="aspect-square w-full max-w-[64px] rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-16 w-16"><rect width="256" height="256" fill="none"></rect><line x1="208" y1="128" x2="128" y2="208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="192" y1="40" x2="40" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-16 w-16"><rect width="256" height="256" fill="none"></rect><line x1="208" y1="128" x2="128" y2="208" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></line><line x1="192" y1="40" x2="40" y2="192" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></line></svg>
               </div>
               <div>
                 <span className="text-dark block text-lg font-bold dark:text-white">
