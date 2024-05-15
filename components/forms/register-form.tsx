@@ -60,7 +60,7 @@ const RegisterForm = () => {
     <Form {...form}>
       <form
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
-        className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
+        className="flex flex-col space-y-4 bg-white px-4 py-8 sm:px-16"
       >
         <FormInput
           type="text"
