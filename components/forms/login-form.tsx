@@ -60,7 +60,7 @@ const LoginForm = ({ session }: { session: Session | null }) => {
       <Form {...form}>
         <form
           onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
-          className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
+          className="flex flex-col space-y-4 bg-white px-4 py-8 sm:px-16"
         >
           <FormInput
             type="text"
@@ -113,7 +113,7 @@ const LoginForm = ({ session }: { session: Session | null }) => {
             </div>
           </div>
         </form>
-        <div className="bg-gray-50 text-center pb-8">
+        <div className="bg-white text-center pb-8">
           <button
             type="button"
             className={cn(buttonVariants({ variant: "outline" }))}
