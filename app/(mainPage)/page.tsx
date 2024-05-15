@@ -51,7 +51,7 @@ export default async function Home() {
       <section className="body-font z-50 text-gray-600">
         <div className="container mx-auto px-5 py-24">
           <div className="mb-20 flex w-full flex-col text-center">
-            <h2 className="title-font mb-1 text-xs font-medium tracking-widest text-primary">
+            <h2 className="title-font mb-1 text-lg font-medium tracking-widest text-primary">
               Lorem ipsum header
             </h2>
             <h2 className="text-dark mb-4 text-3xl font-bold sm:text-4xl md:text-[40px] md:leading-[1.2] dark:text-white">
@@ -414,9 +414,14 @@ export default async function Home() {
       </section>
       <section className="body-font text-gray-600">
         <div className="container mx-auto px-5 py-24">
-          <h1 className="title-font mb-12 text-center text-3xl font-medium text-gray-900">
+        <div className="mb-20 flex w-full flex-col text-center">
+            <h2 className="title-font mb-1 text-lg font-medium tracking-widest text-primary">
             Testimonials
-          </h1>
+            </h2>
+            <h2 className="text-dark mb-4 text-3xl font-bold sm:text-4xl md:text-[40px] md:leading-[1.2] dark:text-white">
+            What Our Client Say
+                </h2>
+          </div>
           <div className="-m-4 flex flex-wrap">
             <div className="w-full p-4 md:w-1/2">
               <div className="hover:shadow-features dark:bg-gray-dark h-full rounded bg-white p-8 shadow-lg">
